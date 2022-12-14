@@ -10,7 +10,7 @@ from  funcoes import*
 sns.set()
 # url dos datasets
 #url_path = 'https://raw.githubusercontent.com/reidnersousa/6semestre/Teoria-Grafos/GrafoExemplo.txt'
-url_path = 'https://raw.githubusercontent.com/reidnersousa/6semestre/Teoria-Grafos/collaboration_graph.txt'
+url_path = "https://raw.githubusercontent.com/reidnersousa/6semestre/Teoria-Grafos/collaboration_graph.txt"
 # df recebe o arquivo e transforma em DataFrame
 df = pd.read_csv(url_path , sep ='\t',names=["Teste1"])
 
@@ -43,15 +43,15 @@ lista3_inteiros=convertString_int(lista3)
 #print(lista1_inteiros)
 lista3_inteiros.sort()
 
+#print(lista3_inteiros)
 
 d_Adj=criandoDicionarioAdj(lista3_inteiros)
-
-#print(d_Adj.get(506))
 
 dicio_Ordenado = sorted(d_Adj.items(),key=lambda t:t[0])
 
 
 grau_Vertice=calcular_Grau(dicio_Ordenado)
+
 
 quantidade_Aresta=len(lista1)
 print("quantida de aresta ",quantidade_Aresta)
@@ -59,13 +59,18 @@ print("quantida de aresta ",quantidade_Aresta)
 qVertice = numeroDeVertice(dic1,dic2)
 print("Quantidade de vertice ",qVertice)
 
-
 grau_Vertice=calcular_Grau(dicio_Ordenado)
-print("grau de cada Vertice ",grau_Vertice)
+print(grau_Vertice)
 
-with open ('collaboration_saida.txt','w') as arquivo:
+
+with open ('grafos_collaboration_saida.txt','w') as arquivo:
   #for valor in qVertice:
   arquivo.write("n(quantidade de Vertice) ="+str(qVertice)+'\n')
   arquivo.write("m(quantidade de Aresta)  ="+str(quantidade_Aresta)+'\n')
   for i in grau_Vertice:
     arquivo.write(str(i)+' '+str(grau_Vertice.get(i))+'\n')
+
+
+opaaa= len(lista3_inteiros)
+lll=bfsOfGraph(opaaa,lista3_inteiros)
+

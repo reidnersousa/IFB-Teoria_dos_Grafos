@@ -6,10 +6,32 @@ import numpy as np
 import seaborn as sns
 from pprint import pprint
 
-import funcoes
+# import funcoes
 
 
+def bfsOfGraph(numero_Vertice, dic_Adj):
+  
+	bfs_traversal = []
+	vis = [False]*numero_Vertice
+	for i in range(numero_Vertice):
 
+		# To check if already visited
+		if (vis[i] == False):
+			q = []
+			vis[i] = True
+			q.append(i)
+
+			# BFS starting from ith node
+			while (len(q) > 0):
+				g_node = q.pop(0)
+
+				bfs_traversal.append(g_node)
+				for it in dic_Adj[g_node]:
+					if (vis[it] == False):
+						vis[it] = True
+						q.append(it)
+
+	return bfs_traversal
 
 
 ######################################################################################################################################################################################################
@@ -269,12 +291,30 @@ def criandoDicionarioAdj(li):
   return dicio_Adj
 
 
+def remove_repetidos(lista):
+    l = []
+    laux=list(lista)
+    lista=laux
+    for i in lista:
+        if i not in l:
+            l.append(i)
+    l.sort()
+    return l
+
 def calcular_Grau(lista_Ordenada):
   grau_cada_Vertice={}
   for i in range(len(lista_Ordenada)):
     verticeAux= int(lista_Ordenada[i][0])
-    grau=len(lista_Ordenada[i][1])
-    grau_cada_Vertice.update({verticeAux: (grau)}) 
+   
+   
+    #grau1=len(lista_Ordenada[i][1])
+    
+    g=list(lista_Ordenada[i][1])
+    g1=remove_repetidos(g)
+    grau=len(g1)
+    
+    grau_cada_Vertice.update({verticeAux: (grau)})
+    
   return grau_cada_Vertice
 
 

@@ -5,7 +5,7 @@ import seaborn as sns
 from pprint import pprint
 from pprint import pprint
 
-from funcoes import *
+from  funcoes import*
 # estilo notebook
 sns.set()
 # url dos datasets
@@ -46,32 +46,30 @@ lista3_inteiros.sort()
 
 d_Adj=criandoDicionarioAdj(lista3_inteiros)
 
-print(d_Adj.get(506))
-
 dicio_Ordenado = sorted(d_Adj.items(),key=lambda t:t[0])
 
 
 grau_Vertice=calcular_Grau(dicio_Ordenado)
-###print(grau_Vertice.get(506))
 
 
-######
-######
-######
 quantidade_Aresta=len(lista1)
 print("quantida de aresta ",quantidade_Aresta)
-
 
 qVertice = numeroDeVertice(dic1,dic2)
 print("Quantidade de vertice ",qVertice)
 
 grau_Vertice=calcular_Grau(dicio_Ordenado)
-#print("grau de cada Vertice ",grau_Vertice)
+print(grau_Vertice)
 
 
-with open ('as_grafos_saida.txt','w') as arquivo:
+with open ('grafos_saida.txt','w') as arquivo:
   #for valor in qVertice:
   arquivo.write("n(quantidade de Vertice) ="+str(qVertice)+'\n')
   arquivo.write("m(quantidade de Aresta)  ="+str(quantidade_Aresta)+'\n')
   for i in grau_Vertice:
     arquivo.write(str(i)+' '+str(grau_Vertice.get(i))+'\n')
+
+
+lll=bfsOfGraph(qVertice,lista3_inteiros)
+
+print(lll)
