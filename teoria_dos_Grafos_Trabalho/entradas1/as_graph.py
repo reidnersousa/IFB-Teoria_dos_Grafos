@@ -61,7 +61,6 @@ print("Quantidade de vertice ",qVertice)
 grau_Vertice=calcular_Grau(dicio_Ordenado)
 print(grau_Vertice)
 
-
 with open ('grafos_saida.txt','w') as arquivo:
   #for valor in qVertice:
   arquivo.write("n(quantidade de Vertice) ="+str(qVertice)+'\n')
@@ -72,4 +71,15 @@ with open ('grafos_saida.txt','w') as arquivo:
 
 lll=bfsOfGraph(qVertice,lista3_inteiros)
 
-print(lll)
+
+maior_g=maior_Grau(grau_Vertice)
+menor_g=menor_Grau(grau_Vertice)
+
+import matplotlib.pyplot as plt
+
+lado_de_cima=[menor_g,maior_g ]
+
+lado_de_baixo=["menor","maior"]
+plt.xlabel("Graus") 
+plt.ylabel("Vertices")
+plt.bar(lado_de_baixo,lado_de_cima,color="blue")

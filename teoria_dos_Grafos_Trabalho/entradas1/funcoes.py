@@ -6,32 +6,10 @@ import numpy as np
 import seaborn as sns
 from pprint import pprint
 
-# import funcoes
+import funcoes
 
 
-def bfsOfGraph(numero_Vertice, dic_Adj):
-  
-	bfs_traversal = []
-	vis = [False]*numero_Vertice
-	for i in range(numero_Vertice):
 
-		# To check if already visited
-		if (vis[i] == False):
-			q = []
-			vis[i] = True
-			q.append(i)
-
-			# BFS starting from ith node
-			while (len(q) > 0):
-				g_node = q.pop(0)
-
-				bfs_traversal.append(g_node)
-				for it in dic_Adj[g_node]:
-					if (vis[it] == False):
-						vis[it] = True
-						q.append(it)
-
-	return bfs_traversal
 
 
 ######################################################################################################################################################################################################
@@ -328,3 +306,63 @@ def criarDicioAdj(lista_Ordenado):
     dicionario_Adjacente.update({verticeAux: (tuplaAux)})
     
   return dicionario_Adjacente
+
+
+
+
+def bfsOfGraph(numero_Vertice, dic_Adj):
+  
+	bfs_traversal = []
+	vis = [False]*numero_Vertice
+	for i in range(numero_Vertice):
+
+		# To check if already visited
+		if (vis[i] == False):
+			q = []
+			vis[i] = True
+			q.append(i)
+
+			# BFS starting from ith node
+			while (len(q) > 0):
+				g_node = q.pop(0)
+
+				bfs_traversal.append(g_node)
+				for it in dic_Adj[g_node]:
+					if (vis[it] == False):
+						vis[it] = True
+						q.append(it)
+
+	return bfs_traversal
+
+
+
+def maior(x,y):
+    max = x
+    if y > max:
+        max = y
+    return max
+def menor(x,y):
+    min = x
+    if y < mim:
+        mim = y
+    return min
+
+def menor_Grau(grau_Verticee):
+  mig = grau_Vertice.items()
+  menor_Grau=list(mig)
+  x=1
+  for i in range(len(menor_Grau)):
+    #print(maior_Grau[i][1],x)
+    mi=maior(menor_Grau[i][1],x)
+
+  return mi
+
+def maior_Grau(grau_Verticee):
+  mgg = grau_Vertice.items()
+  maior_Grau=list(mgg)
+  x=0
+  for i in range(len(maior_Grau)):
+    #print(maior_Grau[i][1],x)
+    x=maior(maior_Grau[i][1],x)  
+
+  return x

@@ -5,7 +5,7 @@ import seaborn as sns
 from pprint import pprint
 from pprint import pprint
 
-from  funcoes import*
+#from  funcoes import*
 # estilo notebook
 sns.set()
 # url dos datasets
@@ -43,7 +43,6 @@ lista3_inteiros=convertString_int(lista3)
 #print(lista1_inteiros)
 lista3_inteiros.sort()
 
-#print(lista3_inteiros)
 
 d_Adj=criandoDicionarioAdj(lista3_inteiros)
 
@@ -62,15 +61,25 @@ print("Quantidade de vertice ",qVertice)
 grau_Vertice=calcular_Grau(dicio_Ordenado)
 print(grau_Vertice)
 
-
-with open ('grafos_collaboration_saida.txt','w') as arquivo:
+with open ('grafos_saida.txt','w') as arquivo:
   #for valor in qVertice:
   arquivo.write("n(quantidade de Vertice) ="+str(qVertice)+'\n')
   arquivo.write("m(quantidade de Aresta)  ="+str(quantidade_Aresta)+'\n')
   for i in grau_Vertice:
     arquivo.write(str(i)+' '+str(grau_Vertice.get(i))+'\n')
 
+## ta erro nesse aqui
+##lll=bfsOfGraph(qVertice,lista3_inteiros)
 
-opaaa= len(lista3_inteiros)
-lll=bfsOfGraph(opaaa,lista3_inteiros)
 
+maior_g=maior_Grau(grau_Vertice)
+menor_g=menor_Grau(grau_Vertice)
+
+import matplotlib.pyplot as plt
+
+lado_de_cima=[menor_g,maior_g ]
+
+lado_de_baixo=["menor","maior"]
+plt.xlabel("Graus") 
+plt.ylabel("Vertices")
+plt.bar(lado_de_baixo,lado_de_cima,color="blue")
